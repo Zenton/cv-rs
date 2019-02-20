@@ -10,7 +10,7 @@ use std::os::raw::{c_char, c_double, c_int};
 // =============================================================================
 //   VideoCapture
 // =============================================================================
-enum CVideoCapture {}
+pub enum CVideoCapture {}
 
 extern "C" {
     pub fn cv_videocapture_new(index: c_int) -> *mut CVideoCapture;
