@@ -9,7 +9,7 @@ use std::os::raw::{c_double, c_float, c_int};
 //  Imgproc
 // =============================================================================
 extern "C" {
-    fn cv_line(
+    pub fn cv_line(
         cmat: *mut CMat,
         pt1: Point2i,
         pt2: Point2i,
@@ -19,9 +19,9 @@ extern "C" {
         shift: c_int,
     );
 
-    fn cv_rectangle(cmat: *mut CMat, rect: Rect, color: Scalar, thickness: c_int, linetype: LineType);
+    pub fn cv_rectangle(cmat: *mut CMat, rect: Rect, color: Scalar, thickness: c_int, linetype: LineType);
 
-    fn cv_ellipse(
+    pub fn cv_ellipse(
         cmat: *mut CMat,
         center: Point2i,
         axes: Size2i,
@@ -34,10 +34,10 @@ extern "C" {
         shift: c_int,
     );
 
-    fn cv_cvt_color(cmat: *const CMat, output: *mut CMat, code: ColorConversion);
-    fn cv_pyr_down(cmat: *const CMat, output: *mut CMat);
-    fn cv_threshold(from: *const CMat, to: *mut CMat, thresh: f64, maxval: f64, ttype: ThresholdType);
-    fn cv_erode(
+    pub fn cv_cvt_color(cmat: *const CMat, output: *mut CMat, code: ColorConversion);
+    pub fn cv_pyr_down(cmat: *const CMat, output: *mut CMat);
+    pub fn cv_threshold(from: *const CMat, to: *mut CMat, thresh: f64, maxval: f64, ttype: ThresholdType);
+    pub fn cv_erode(
         from: *const CMat,
         to: *mut CMat,
         kernel: *const CMat,
@@ -46,7 +46,7 @@ extern "C" {
         border_type: i32,
         border_value: Scalar,
     );
-    fn cv_dilate(
+    pub fn cv_dilate(
         from: *const CMat,
         to: *mut CMat,
         kernel: *const CMat,
@@ -55,7 +55,7 @@ extern "C" {
         border_type: i32,
         border_value: Scalar,
     );
-    fn cv_gaussian_blur(
+    pub fn cv_gaussian_blur(
         from: *const CMat,
         to: *mut CMat,
         dsize: Size2i,
@@ -63,7 +63,7 @@ extern "C" {
         sigma_y: c_double,
         border_type: i32,
     );
-    fn cv_resize(
+    pub fn cv_resize(
         from: *const CMat,
         to: *mut CMat,
         dsize: Size2i,
@@ -71,7 +71,7 @@ extern "C" {
         fy: c_double,
         interpolation: InterpolationFlag,
     );
-    fn cv_calc_hist(
+    pub fn cv_calc_hist(
         cimages: *const CMat,
         nimages: c_int,
         channels: *const c_int,
@@ -81,7 +81,7 @@ extern "C" {
         hist_size: *const c_int,
         ranges: *const *const c_float,
     );
-    fn cv_calc_back_project(
+    pub fn cv_calc_back_project(
         cimages: *const CMat,
         nimages: c_int,
         channels: *const c_int,
@@ -90,14 +90,14 @@ extern "C" {
         ranges: *const *const c_float,
     );
 
-    fn cv_compare_hist(
+    pub fn cv_compare_hist(
         first_image: *const CMat,
         second_image: *const CMat,
         method: HistogramComparisionMethod,
         result: *mut CResult<c_double>,
     );
 
-    fn cv_canny(
+    pub fn cv_canny(
         image: *const CMat,
         edges: *mut CMat,
         threshold1: c_double,

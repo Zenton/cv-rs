@@ -7,13 +7,13 @@
 //! successful (I probably haven't tried hard enough). There is another port
 //! [opencv-rust](https://github.com/kali/opencv-rust/) which generates OpenCV
 //! bindings using a Python script.
-#![deny(missing_docs)]
-#![deny(missing_debug_implementations)]
-#![deny(missing_copy_implementations)]
-#![deny(trivial_casts)]
-#![deny(trivial_numeric_casts)]
-#![deny(unused_import_braces)]
-#![deny(unused_qualifications)]
+//#![deny(missing_docs)]
+//#![deny(missing_debug_implementations)]
+//#![deny(missing_copy_implementations)]
+//#![deny(trivial_casts)]
+//#![deny(trivial_numeric_casts)]
+//#![deny(unused_import_braces)]
+//#![deny(unused_qualifications)]
 
 extern crate bytes;
 #[macro_use]
@@ -49,13 +49,13 @@ extern "C" {
 }
 
 #[repr(C)]
-struct CResult<T: Copy> {
+pub struct CResult<T: Copy> {
     value: T,
     error: CDisposableString,
 }
 
 #[repr(C)]
-struct CEmptyResult {
+pub struct CEmptyResult {
     error: CDisposableString,
 }
 
@@ -100,7 +100,7 @@ impl Into<Result<(), String>> for CEmptyResult {
 }
 
 #[repr(C)]
-struct CDisposableString {
+pub struct CDisposableString {
     value: *mut c_char,
 }
 
